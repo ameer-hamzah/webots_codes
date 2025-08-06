@@ -16,6 +16,7 @@ timestep = int(robot.getBasicTimeStep())
 
 # Maximum velocity allowed (Max=6.28)
 max_vel = 3.14
+state = 'FOLLOW'
 
 # Getting motors
 leftMotor = robot.getDevice('left wheel motor')
@@ -65,9 +66,16 @@ while robot.step(timestep) != -1:
     print(light_val)
     
     
-    
-    right_wheel_vel = max_vel-dist_val[7]-dist_val[6]-dist_val[5]+light_val[0]+light_val[1]
-    left_wheel_vel = max_vel-dist_val[0]-dist_val[1]-dist_val[2]+light_val[7]+light_val[6]
+    if state == 'FOLLOW':
+        right_wheel_vel = max_vel-dist_val[7]-dist_val[6]-dist_val[5]+light_val[0]+light_val[1]
+        left_wheel_vel = max_vel-dist_val[0]-dist_val[1]-dist_val[2]+light_val[7]+light_val[6]
+        if(max(dist_val)>1):
+            state = 'AVOID'
+    elif state == 'AVOID':
+        right_wheel_vel = max_vel-dist_val[7]-dist_val[6]-dist_val[5]
+        left_wheel_vel = max_vel-dist_val[0]-dist_val[1]-dist_val[2]
+        if(max(dist_val)<1):
+            state = 'FOLLOW'
 
     # Process sensor data here.
 

@@ -1,0 +1,90 @@
+#VRML_SIM R2025a utf8
+
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/backgrounds/protos/TexturedBackground.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/floors/protos/RectangleArena.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/robots/gctronic/e-puck/protos/E-puck.proto"
+
+WorldInfo {
+}
+Viewpoint {
+  orientation 0.5072688208458515 0.5017652801773697 -0.7006496606765648 1.9294971188462173
+  position 0.25659095549589844 1.5623039255347757 4.062945826028401
+}
+TexturedBackground {
+}
+TexturedBackgroundLight {
+}
+RectangleArena {
+}
+Solid {
+  translation 0.255683 0.0165864 0.05
+  rotation 0 0 1 1.5708
+  children [
+    DEF BOX Shape {
+      appearance PBRAppearance {
+        baseColor 1 0 0
+        roughness 1
+        metalness 0
+      }
+      geometry Box {
+        size 0.4 0.1 0.1
+      }
+    }
+  ]
+  boundingObject USE BOX
+  physics Physics {
+    density -1
+    mass 0.1
+  }
+}
+Solid {
+  translation 0.0051559 0.224566 0.05
+  children [
+    DEF BOX Shape {
+      appearance PBRAppearance {
+        baseColor 1 0 0
+        roughness 1
+        metalness 0
+      }
+      geometry Box {
+        size 0.4 0.1 0.1
+      }
+    }
+  ]
+  name "solid(1)"
+  boundingObject USE BOX
+  physics Physics {
+    density -1
+    mass 0.1
+  }
+}
+Solid {
+  translation 0.00506609 -0.188565 0.05
+  children [
+    DEF BOX Shape {
+      appearance PBRAppearance {
+        baseColor 1 0 0
+        roughness 1
+        metalness 0
+      }
+      geometry Box {
+        size 0.4 0.1 0.1
+      }
+    }
+  ]
+  name "solid(2)"
+  boundingObject USE BOX
+  physics Physics {
+    density -1
+    mass 0.1
+  }
+}
+PointLight {
+  attenuation 0 0 1
+  location 0.4 0.4 0
+}
+E-puck {
+  translation -0.344784 -0.0230255 0
+  controller "super_controller"
+}
